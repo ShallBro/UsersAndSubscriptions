@@ -1,6 +1,6 @@
 create table if not exists public.subscriptions
 (
-    name    char(256),
+    name    varchar(256),
     user_id integer
         constraint subscriptions_users_id_fk
             references public.users,

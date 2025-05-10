@@ -46,6 +46,7 @@ public class SubscriptionsService {
   }
 
   public List<String> topSubscriptions() {
+    log.info("Получение топ 3 популярных подписок");
     return subscriptionsRepository.topSubscriptions();
   }
 
