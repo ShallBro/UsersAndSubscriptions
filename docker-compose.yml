@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "controlUsersAndSubscriptions"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "12345"
+    volumes:
+      - ./src/main/resources/scripts:/docker-entrypoint-initdb.d
+    ports:
+      - "25432:5432"
+    networks:
+      - postgres
+  storedayz-backend:
+    build: backend_module
+    ports:
+      - "8181:8181"
+    depends_on:
+      - postgres
+    networks:
+      - postgres
+networks:
+  postgres:
+    driver: bridge
