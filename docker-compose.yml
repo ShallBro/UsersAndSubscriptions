@@ -12,8 +12,8 @@ services:
       - "25432:5432"
     networks:
       - postgres
-  storedayz-backend:
-    build: backend_module
+  backend:
+    build: .
     ports:
       - "8181:8181"
     depends_on:
